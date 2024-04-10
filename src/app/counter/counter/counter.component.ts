@@ -7,18 +7,6 @@ import { Component } from '@angular/core';
 })
 export class CounterComponent {
 
-  counter: number = 0;
-
   constructor(){}
-
-  onIncrement() {
-    this.counter++;
-  }
-  onDecrement() {
-    this.counter--;
-  }
-  onReset() {
-    this.counter = 0;
-  }
 
 }
