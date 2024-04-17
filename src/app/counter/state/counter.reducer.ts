@@ -5,7 +5,6 @@ import { decrement, increment, reset } from "./counter.action";
 
 const _counterReducer = createReducer(initialState, 
 on(increment, (state) => {
-    console.log('state::::', state);
     return {
         ...state,
         counter: state.counter + 1
