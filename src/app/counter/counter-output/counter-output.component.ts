@@ -6,17 +6,17 @@ import { Observable, Subscription } from 'rxjs';
 @Component({
   selector: 'app-counter-output',
   templateUrl: './counter-output.component.html',
-  styleUrls: ['./counter-output.component.css']
+  styleUrls: ['./counter-output.component.css'],
 })
-export class CounterOutputComponent implements OnInit{
+export class CounterOutputComponent implements OnInit {
+  numberCount: number;
 
-  counter$: Observable<{counter: number}>;
-  
-  constructor(private store: Store<{countXyz: CounterState}>) {}
-
+  constructor(private store: Store<{ countXyz: CounterState }>) {}
 
   ngOnInit() {
-    this.counter$ = this.store.select('countXyz');
+    this.store.select('countXyz').subscribe((data) => {
+      console.log('Counter observable called');
+      this.numberCount = data.counter;
+    });
   }
-
 }
