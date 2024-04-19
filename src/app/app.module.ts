@@ -14,7 +14,7 @@ import { HomeComponent } from './home/home.component';
 import { AppRoutingModule } from './app-routing.module';
 import { HeaderComponent } from './shared/components/header/header.component';
 import { PostsListComponent } from './posts/posts-list/posts-list.component';
-
+import { appReducer } from './store/app.state';
 
 @NgModule({
   declarations: [
@@ -31,7 +31,8 @@ import { PostsListComponent } from './posts/posts-list/posts-list.component';
     BrowserModule,
     FormsModule,
     AppRoutingModule,
-    StoreModule.forRoot({countXyz: counterReducer}),
+   // StoreModule.forRoot({countXyz: counterReducer}),
+    StoreModule.forRoot(appReducer),
     StoreDevtoolsModule.instrument({
       maxAge: 25, // Retains last 25 states
     //  logOnly: environment.production, // Restrict extension to log-only mode
