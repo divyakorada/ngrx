@@ -4,5 +4,5 @@ import { PostsState } from "./posts.state";
 const getPostsState = createFeatureSelector<PostsState>('postXyz')
 
 export const getPosts = createSelector(getPostsState, state => {
-    return state.posts;
+    return state.postList;
 })
