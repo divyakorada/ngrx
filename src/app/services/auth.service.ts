@@ -24,4 +24,17 @@ export class AuthService {
     const user = new User(data.email, data.idToken, data.localId, expirationDate);
     return user;
   }
+
+  getErrorMessage(message: string) {
+    switch(message) {
+      case 'EMAIL_NOT_FOUND':
+        return 'email not found';
+      case 'INVALID_PASSWORD':
+        return 'Invalid password'; 
+      case 'INVALID_LOGIN_CREDENTIALS':
+        return 'Invalid Login credentials'; 
+      default:
+        return 'Unknown error occured Please tty again';
+    }
+  }
 }
