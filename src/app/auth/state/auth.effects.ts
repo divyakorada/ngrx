@@ -5,10 +5,7 @@ import { catchError, exhaustMap, map, tap } from 'rxjs/operators';
 import { AuthService } from 'src/app/services/auth.service';
 import { Store } from '@ngrx/store';
 import { AppState } from 'src/app/store/app.state';
-import {
-  setErrorMessage,
-  setLoadingSpinner,
-} from 'src/app/store/shared/shared.actions';
+import { setErrorMessage, setLoadingSpinner } from 'src/app/store/shared/shared.actions';
 import { of } from 'rxjs';
 import { Router } from '@angular/router';
 
