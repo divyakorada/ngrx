@@ -8,6 +8,7 @@ import { AuthReducer } from './state/auth.reducer';
 import { AUTH_STATE_NAME } from './state/auth.selector';
 import { EffectsModule } from '@ngrx/effects';
 import { AuthEffects } from './state/auth.effects';
+import { SignupComponent } from './signup/signup.component';
 
 const routes: Routes = [
   {
@@ -15,12 +16,13 @@ const routes: Routes = [
     children: [
       { path: '', redirectTo: 'login', pathMatch: 'full' },
       { path: 'login', component: LoginComponent },
+      { path: 'signup', component: SignupComponent },
     ],
   },
 ];
 
 @NgModule({
-  declarations: [LoginComponent],
+  declarations: [LoginComponent, SignupComponent],
   imports: [
     CommonModule,
     ReactiveFormsModule,
