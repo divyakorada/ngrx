@@ -30,7 +30,7 @@ const routes: Routes = [
    /* this AUTH_STATE_NAME needed in header component to show logIn/logOut menus. 
       So removed from here & added in auth.state.ts */
    // StoreModule.forFeature(AUTH_STATE_NAME, AuthReducer),
-    EffectsModule.forFeature([AuthEffects])
+    EffectsModule.forFeature()
   ],
 })
 export class AuthModule {}

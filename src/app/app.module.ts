@@ -13,6 +13,7 @@ import { AppRoutingModule } from './app-routing.module';
 import { HeaderComponent } from './shared/components/header/header.component';
 import { appReducer } from './store/app.state';
 import { LoadingSpinnerComponent } from './shared/components/loading-spinner/loading-spinner.component';
+import { AuthEffects } from './auth/state/auth.effects';
 
 @NgModule({
   declarations: [
@@ -33,7 +34,8 @@ import { LoadingSpinnerComponent } from './shared/components/loading-spinner/loa
       maxAge: 25, // Retains last 25 states
     //  logOnly: environment.production, // Restrict extension to log-only mode
     }),
-    EffectsModule.forRoot([])
+    /*on refresh we need autoLogin effect in root level to preserve localstorage user data*/
+    EffectsModule.forRoot([AuthEffects])
   ],
   providers: [],
   bootstrap: [AppComponent]
