@@ -7,13 +7,14 @@ import { StoreModule } from '@ngrx/store';
 import { EffectsModule } from '@ngrx/effects';
 import { counterReducer } from './counter/state/counter.reducer';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
-import { HttpClientModule } from '@angular/common/http';
+import { HTTP_INTERCEPTORS, HttpClientModule } from '@angular/common/http';
 import { HomeComponent } from './home/home.component';
 import { AppRoutingModule } from './app-routing.module';
 import { HeaderComponent } from './shared/components/header/header.component';
 import { appReducer } from './store/app.state';
 import { LoadingSpinnerComponent } from './shared/components/loading-spinner/loading-spinner.component';
 import { AuthEffects } from './auth/state/auth.effects';
+import { AuthTokenInterceptor } from './services/AuthToken.Interceptor';
 
 @NgModule({
   declarations: [
@@ -37,7 +38,9 @@ import { AuthEffects } from './auth/state/auth.effects';
     /*on refresh we need autoLogin effect in root level to preserve localstorage user data*/
     EffectsModule.forRoot([AuthEffects])
   ],
-  providers: [],
+  providers: [
+    {provide: HTTP_INTERCEPTORS, useClass: AuthTokenInterceptor, multi: true}
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
