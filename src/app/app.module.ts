@@ -15,6 +15,7 @@ import { appReducer } from './store/app.state';
 import { LoadingSpinnerComponent } from './shared/components/loading-spinner/loading-spinner.component';
 import { AuthEffects } from './auth/state/auth.effects';
 import { AuthTokenInterceptor } from './services/AuthToken.Interceptor';
+import { StoreRouterConnectingModule } from '@ngrx/router-store';
 
 @NgModule({
   declarations: [
@@ -36,7 +37,8 @@ import { AuthTokenInterceptor } from './services/AuthToken.Interceptor';
     //  logOnly: environment.production, // Restrict extension to log-only mode
     }),
     /*on refresh we need autoLogin effect in root level to preserve localstorage user data*/
-    EffectsModule.forRoot([AuthEffects])
+    EffectsModule.forRoot([AuthEffects]),
+    StoreRouterConnectingModule.forRoot()
   ],
   providers: [
     {provide: HTTP_INTERCEPTORS, useClass: AuthTokenInterceptor, multi: true}
