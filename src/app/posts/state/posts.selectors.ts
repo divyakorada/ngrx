@@ -16,4 +16,4 @@ export const getPosts = createSelector(getPostsState, state => {
 
 export const getPostById = createSelector(getPosts, getCurrentRouteData, (posts, route: RouterStateUrl) => {
     return posts.find((post) => post.id === route.params['id']);
-})
+});
