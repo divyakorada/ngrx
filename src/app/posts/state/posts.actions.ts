@@ -21,3 +21,7 @@ export const deletePost = createAction(DELETE_POST_ACTION, props<{ id : any}>())
 export const deletePostSuccess = createAction(DELETE_POST_SUCCESS, props<{ id: any }>()) //API
 export const loadPosts = createAction(LOAD_POSTS);
 export const loadPostsSuccess = createAction(LOAD_POSTS_SUCCESS, props<{ loadPosts: Post[] }>());
+
+
+// Dummy action
+export const dummyAction = createAction('[dummy action]');
