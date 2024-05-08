@@ -4,6 +4,8 @@ import { PostsService } from "src/app/services/posts.service";
 import { addPost, addPostSuccess, deletePost, deletePostSuccess, loadPosts, loadPostsSuccess, updatePost, updatePostSuccess } from "./posts.actions";
 import { filter, map, mergeMap, switchMap } from "rxjs";
 import { ROUTER_NAVIGATION, RouterNavigatedAction } from "@ngrx/router-store";
+import { Update } from "@ngrx/entity";
+import { Post } from "src/app/models/posts.model";
 
 @Injectable()
 export class PostsEffects {
@@ -42,7 +44,13 @@ export class PostsEffects {
       switchMap((action) => {
         return this.postsService.updatePost(action.updatedPost).pipe(
           map((data) => {
-            return updatePostSuccess({ post: action.updatedPost });
+            const updatedPost: Update<Post> = {
+              id: action.updatedPost.id!,
+              changes: {
+                ...action.updatedPost
+               },
+            }
+            return updatePostSuccess({ post: updatedPost });
           })
         );
       })
